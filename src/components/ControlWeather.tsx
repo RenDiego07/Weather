@@ -36,12 +36,14 @@ export default function ControlWeather() {
                 descriptionRef.current.innerHTML = (idx >= 0) ? items[idx]["description"] : ""
             }
   };
+  console.log(selected);
 
 
 
 
   {/* JSX */}
   return (
+
     <Paper
       sx={{
         p: 2,
@@ -49,12 +51,13 @@ export default function ControlWeather() {
         flexDirection: 'column',
       }}
     >
-        
+        {/*
       <Typography mb={2} component="h3" variant="h6" color="primary">
         {selected >= 0 ? items[selected].description : ""}
       </Typography>
+      */}
         
-
+      <Typography ref={descriptionRef} mt={2} component="p" color="text.secondary" />
 
 
       <Box sx={{ minWidth: 120 }}>
