@@ -8,15 +8,30 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 import { useState, useRef} from 'react';
 
-export default function ControlWeather() {
+
+  
+interface weatherProp{
+  target: string,
+  setTarget: (value:string) => void
+}
+
+
+
+
+export default function ControlWeather({target, setTarget}: weatherProp) {
+
+  
   /* setSelected es la variable de actualización */
+  
+  
   const [selected, setSelected] = useState(-1);
+  
 
   {/* Arreglo de objetos */}
   const items = [
-    { name: "Precipitación", description: "Cantidad de agua que cae sobre una superficie en un período específico." },
-    { name: "Humedad", description: "Cantidad de vapor de agua presente en el aire, generalmente expresada como un porcentaje." },
-    { name: "Nubosidad", description: "Grado de cobertura del cielo por nubes, afectando la visibilidad y la cantidad de luz solar recibida." },
+    { name: "Guayaquil", description: "Cantidad de agua que cae sobre una superficie en un período específico." },
+    { name: "Quito", description: "Cantidad de vapor de agua presente en el aire, generalmente expresada como un porcentaje." },
+    { name: "Salinas", description: "Grado de cobertura del cielo por nubes, afectando la visibilidad y la cantidad de luz solar recibida." },
   ];
 
   {/* Arreglo de elementos JSX */}
@@ -25,25 +40,19 @@ export default function ControlWeather() {
       {item.name}
     </MenuItem>
   ));
-  const descriptionRef = useRef<HTMLDivElement>(null);
 
   {/* Manejador de eventos */}
   const handleChange = (event: SelectChangeEvent) => {
     const idx = parseInt(event.target.value);
-    setSelected(idx);
-             {/* Modificación de la referencia descriptionRef */}
-             if (descriptionRef.current !== null) {
-                descriptionRef.current.innerHTML = (idx >= 0) ? items[idx]["description"] : ""
-            }
+    setTarget(items[idx]["name"]);
+ 
   };
-  console.log(selected);
 
 
 
 
   {/* JSX */}
   return (
-
     <Paper
       sx={{
         p: 2,
@@ -51,18 +60,17 @@ export default function ControlWeather() {
         flexDirection: 'column',
       }}
     >
-        {/*
+      {/** 
       <Typography mb={2} component="h3" variant="h6" color="primary">
         {selected >= 0 ? items[selected].description : ""}
       </Typography>
-      */}
-        
-      <Typography ref={descriptionRef} mt={2} component="p" color="text.secondary" />
+        */}
+
 
 
       <Box sx={{ minWidth: 120 }}>
         <FormControl fullWidth>
-          <InputLabel id="simple-select-label">Variables</InputLabel>
+          <InputLabel id="simple-select-label">Ciudades</InputLabel>
           
           <Select
             labelId="simple-select-label"
@@ -72,7 +80,7 @@ export default function ControlWeather() {
             onChange={handleChange}
           >
             <MenuItem key="-1" value="-1" disabled>
-              Seleccione una variable
+              Ciudades
             </MenuItem>
             {options}
           </Select>
