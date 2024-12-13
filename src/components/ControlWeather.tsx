@@ -5,20 +5,18 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import WeatherPro from '../interface/WeatherPro'
+
 
 import { useState, useRef} from 'react';
 
 
-  
-interface weatherProp{
-  target: string,
-  setTarget: (value:string) => void
-}
 
 
 
 
-export default function ControlWeather({target, setTarget}: weatherProp) {
+
+export default function ControlWeather({target, setTarget}: WeatherPro) {
 
   
   /* setSelected es la variable de actualización */
@@ -48,6 +46,8 @@ export default function ControlWeather({target, setTarget}: weatherProp) {
  
   };
 
+
+  
 
 
 

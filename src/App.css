@@ -51,3 +51,19 @@
   margin: 40px;
 
 }
+
+
+.testChart{
+  background-color: white;
+
+
+}
+
+
+.Header_Weather{
+
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  background-color:black;
+}

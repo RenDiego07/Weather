@@ -7,7 +7,8 @@ import IndicatorWeather from "./components/IndicatorWeather";
 import LineChartWeather from "./components/LineChartWeather";
 import { useEffect, useState } from 'react';
 import Item from './interface/Item'
-
+import TestChart from "./components/TestChart";
+import Header_Weather from "./components/HeaderWeather"
 interface Indicator {
   title?: string;
   subtitle?: string;
@@ -114,8 +115,13 @@ function App() {
 }
   return (
     <Grid container spacing={5}>
+      {/* Primer encabezado  */}
+      <Grid size={{xs:6, xl:12}}>
+            <Header_Weather target={value} />
+      </Grid>
           {renderIndicators()}
       {/* Tabla */}
+      
       <Grid size={{ xs: 12, xl: 8 }}>
         <Grid container spacing={2}>
           <Grid size={{ xs: 12, xl: 3 }}>
@@ -131,6 +137,10 @@ function App() {
       {/* Gráfico */}
       <Grid size={{ xs: 12, xl: 4 }}>
         <LineChartWeather />
+      </Grid>
+
+      <Grid size={{xs:12, xl:12}}>
+          <TestChart/>
       </Grid>
     </Grid>
   );
