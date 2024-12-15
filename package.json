@@ -17,8 +17,11 @@
     "@emotion/styled": "^11.13.5",
     "@mui/material": "^6.1.10",
     "@mui/x-charts": "^7.23.1",
+    "leaflet": "^1.9.4",
+    "maplibre-gl": "^4.7.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-leaflet": "^4.2.1",
     "recharts": "^2.14.1"
   },
   "devDependencies": {

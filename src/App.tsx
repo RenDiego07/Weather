@@ -2,13 +2,16 @@ import Grid from "@mui/material/Grid2";
 import "./App.css";
 import ControlWeather from "./components/ControlWeather";
 import TableWeather from "./components/TableWeather";
-
+import ControLocation from "./components/ControLocation"
 import IndicatorWeather from "./components/IndicatorWeather";
 import LineChartWeather from "./components/LineChartWeather";
 import { useEffect, useState } from 'react';
 import Item from './interface/Item'
-import TestChart from "./components/TestChart";
 import Header_Weather from "./components/HeaderWeather"
+import LocationMap from "./components/LocationMap";
+import Coordinates from "./interface/Coordinates";
+
+
 interface Indicator {
   title?: string;
   subtitle?: string;
@@ -18,21 +21,48 @@ interface Indicator {
 
 function App() {
 
+    {/*Coordenadas para Quito, Guayaquil, Salinas*/}
+    const hashCities: {[key:string]: Coordinates}  = {
+        "Guayaquil": {
+          center:[-2.170998, -79.922359], 
+          zoom: 12
+        }, 
+        "Quito": {
+          center: [-0.180653, -78.467834],
+          zoom: 12
+        },
+        "Salinas":{
+          center: [-2.204514,-80.979979],
+          zoom:12
+        }
+    };
+
+  
 
   
      {/* Variable de estado y función de actualización */}
-      let[item, setItems] = useState<Item[]>([]);
-     let [owm, setOWM] = useState(localStorage.getItem("openWeatherMap"));
+    let[item, setItems] = useState<Item[]>([]);
+    let [owm, setOWM] = useState(localStorage.getItem("openWeatherMap"));
+
+    let [cords, setCords ] = useState(-1)
 
 
+    let [indicators, setIndicators] = useState<Indicator[]>([]);
 
-     let [indicators, setIndicators] = useState<Indicator[]>([]);
-
-     let [value, setvalue] = useState("Guayaquil");
+    let [value, setvalue] = useState("Guayaquil");
+    let [weather, setWeather] = useState("Temperature")
 
 
      const [loading, setLoading] = useState(false); // Estado de carga
 
+     const mapCity = (selectedCity: string): void =>{
+        if(hashCities[selectedCity]){
+          setCords({
+            center: hashCities[selectedCity].center,
+            zoom: hashCities[selectedCity].zoom
+          })
+        }
+     }
 
     const fetchWeatherData = async (selectedCity: string) =>{
         setLoading(true);
@@ -89,11 +119,12 @@ function App() {
           setLoading(false);
         }
       };          
-        
-
-
     useEffect(() =>{
+    
         fetchWeatherData(value)
+        console.log(value)
+        mapCity(value)
+        
     },[value]);
 
 
@@ -114,6 +145,7 @@ function App() {
      
 }
   return (
+    <div className="background">
     <Grid container spacing={5}>
       {/* Primer encabezado  */}
       <Grid size={{xs:6, xl:12}}>
@@ -122,11 +154,11 @@ function App() {
           {renderIndicators()}
       {/* Tabla */}
       
-      <Grid size={{ xs: 12, xl: 8 }}>
-        <Grid container spacing={2}>
-          <Grid size={{ xs: 12, xl: 3 }}>
-            <ControlWeather target={value} setTarget={setvalue}/>
-
+      <Grid size={{ xs: 12, xl: 6 }}>
+        <Grid container spacing={1}>
+          <Grid size={{ xs: 12, xl: 3 }} container spacing ={5} >
+          <ControLocation target={value} setTarget={setvalue}/>  
+          <ControlWeather target={weather}  setTarget={setWeather}/>
           </Grid>
           <Grid size={{ xs: 12, xl: 9 }}>
             <TableWeather itemsIn={item}/>
@@ -135,14 +167,16 @@ function App() {
       </Grid>
 
       {/* Gráfico */}
-      <Grid size={{ xs: 12, xl: 4 }}>
-        <LineChartWeather />
+      <Grid size={{ xs: 12, xl: 6 }} className="de">
+      <LocationMap center={cords.center} zoom={cords.zoom} ></LocationMap>
       </Grid>
 
-      <Grid size={{xs:12, xl:12}}>
-          <TestChart/>
+      <Grid size ={{xs:12, xl:5}} >
+      <LineChartWeather />
       </Grid>
+
     </Grid>
+  </div>
   );
 }
 

@@ -1,37 +1,12 @@
+
 #root {
-  max-width: 1280px;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem;
   text-align: center;
+  
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
 
 .card {
   padding: 2em;
@@ -41,29 +16,33 @@
   color: #888;
 }
 
-#header_div{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: black;
-  height: 200px;
-  width: 100%;
-  margin: 40px;
 
-}
-
-
-.testChart{
-  background-color: white;
+/* Archivo App.css */
+.background{
+  background: linear-gradient(to bottom, #4A90E2, #34495E);
 
 
 }
 
 
 .Header_Weather{
-
   display: flex;
   justify-content:center;
   align-items: center;
-  background-color:black;
+
+}
+
+.Header_Weather h2 {
+  opacity: 0; /* Inicia invisible */
+  transition: opacity 0.5s ease-in-out; /* Suaviza el efecto de aparición */
+}
+
+.Header_Weather h2.fade-in {
+  opacity: 1; /* Aparece con opacidad completa */
+}
+
+.de{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

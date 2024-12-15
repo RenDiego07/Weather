@@ -22,14 +22,13 @@ export default function ControlWeather({target, setTarget}: WeatherPro) {
   /* setSelected es la variable de actualización */
   
   
-  const [selected, setSelected] = useState(-1);
   
 
   {/* Arreglo de objetos */}
   const items = [
-    { name: "Guayaquil", description: "Cantidad de agua que cae sobre una superficie en un período específico." },
-    { name: "Quito", description: "Cantidad de vapor de agua presente en el aire, generalmente expresada como un porcentaje." },
-    { name: "Salinas", description: "Grado de cobertura del cielo por nubes, afectando la visibilidad y la cantidad de luz solar recibida." },
+    { name: "Humedad", description: "Cantidad de agua que cae sobre una superficie en un período específico." },
+    { name: "Presión", description: "Cantidad de vapor de agua presente en el aire, generalmente expresada como un porcentaje." },
+    { name: "Temperatura", description: "Grado de cobertura del cielo por nubes, afectando la visibilidad y la cantidad de luz solar recibida." },
   ];
 
   {/* Arreglo de elementos JSX */}
@@ -70,7 +69,7 @@ export default function ControlWeather({target, setTarget}: WeatherPro) {
 
       <Box sx={{ minWidth: 120 }}>
         <FormControl fullWidth>
-          <InputLabel id="simple-select-label">Ciudades</InputLabel>
+          <InputLabel id="simple-select-label">Clima</InputLabel>
           
           <Select
             labelId="simple-select-label"
@@ -80,7 +79,7 @@ export default function ControlWeather({target, setTarget}: WeatherPro) {
             onChange={handleChange}
           >
             <MenuItem key="-1" value="-1" disabled>
-              Ciudades
+              Meteroleogía 
             </MenuItem>
             {options}
           </Select>
