@@ -1,20 +1,10 @@
 import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import WeatherPro from '../interface/WeatherPro'
-
-
-import { useState, useRef} from 'react';
-
-
-
-
-
-
 
 export default function ControLocation({target, setTarget}: WeatherPro) {
 

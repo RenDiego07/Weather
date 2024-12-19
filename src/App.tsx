@@ -37,14 +37,20 @@ function App() {
         }
     };
 
-  
 
-  
+
+    // variables para el gráfico
+    let [meteorology, setMeteorology] = useState({ciudad: "Guayaquil", meteorologia: "Temperatura"})
+    //
+
+
+
      {/* Variable de estado y función de actualización */}
     let[item, setItems] = useState<Item[]>([]);
     let [owm, setOWM] = useState(localStorage.getItem("openWeatherMap"));
 
-    let [cords, setCords ] = useState(-1)
+    let [cords, setCords ] = useState({  center:[-2.170998, -79.922359], 
+      zoom: 12})
 
 
     let [indicators, setIndicators] = useState<Indicator[]>([]);
@@ -65,15 +71,18 @@ function App() {
      }
 
     const fetchWeatherData = async (selectedCity: string) =>{
+
         setLoading(true);
-
-
         try{
           const API_KEY = "27a2bc97a7f2f553eb69e2ad906a8f2f";
           const response = await fetch(
             `https://api.openweathermap.org/data/2.5/forecast?q=${selectedCity}&mode=xml&appid=${API_KEY}`
           );
+
           const xmlData = await response.text();
+
+          console.log(xmlData)
+
           // Parsear el XML
           const parser = new DOMParser();
           const xml = parser.parseFromString(xmlData, "application/xml");
@@ -109,9 +118,9 @@ function App() {
               precipitation: timeStamp.getElementsByTagName("precipitation")[0]?.getAttribute("probability")||" ",
               humidity: timeStamp.getElementsByTagName("humidity")[0]?.getAttribute("value")||" ",
               cloud:timeStamp.getElementsByTagName("clouds")[0]?.getAttribute("value")||" "
-
         }});
-        setItems(forecast)
+
+          setItems(forecast)
           
         } catch (error) {
           console.error("Error fetching data:", error);
@@ -172,7 +181,7 @@ function App() {
       </Grid>
 
       <Grid size ={{xs:12, xl:5}} >
-      <LineChartWeather />
+      {/*<LineChartWeather /> */}
       </Grid>
 
     </Grid>

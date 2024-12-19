@@ -9,6 +9,7 @@ const data = [
     { time: "00:00", temperature: 23 },
   ];
   
+
   export default function TestChart() {
     return (
       <LineChart width={400} height={200} data={data} className="testChart">
