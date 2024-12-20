@@ -1,6 +1,5 @@
 import { MapContainer, TileLayer } from "react-leaflet";
 import Coordinates from "../interface/Coordinates";
-import "leaflet/dist/leaflet.css";
 
 export default function LocationMap({ center, zoom }: Coordinates) {
   return (
@@ -10,10 +9,11 @@ export default function LocationMap({ center, zoom }: Coordinates) {
       zoom={zoom}
       style={{ height: "50vh", width: "85%" }}
     >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-      />
+    <TileLayer
+      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    />
+
     </MapContainer>
   );
 }
