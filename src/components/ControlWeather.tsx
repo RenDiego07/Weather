@@ -71,7 +71,7 @@ export default function ControlWeather({target, setTarget}: WeatherPro) {
             onChange={handleChange}
           >
             <MenuItem key="-1" value="-1" disabled>
-              Meteroleogía 
+              Temperatura 
             </MenuItem>
             {options}
           </Select>
