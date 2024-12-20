@@ -30,6 +30,8 @@ export default function ControLocation({target, setTarget}: WeatherPro) {
 
   {/* Manejador de eventos */}
   const handleChange = (event: SelectChangeEvent) => {
+    const e = target;
+    console.log(e);
     const idx = parseInt(event.target.value);
     setTarget(items[idx]["name"]);
  

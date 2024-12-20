@@ -7,7 +7,6 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Item from '../interface/Item';
 import {useState, useEffect} from 'react';
-import MyProp from '../interface/MyProp';
 
 interface MyProp {
   itemsIn: Item[];
@@ -16,7 +15,7 @@ interface MyProp {
 
 export default function BasicTable(props: MyProp) {
 
-let [rows, setRows] = useState<Item[]>([])
+const [rows, setRows] = useState<Item[]>([])
 
 useEffect( ()=>{
       setRows(props.itemsIn)

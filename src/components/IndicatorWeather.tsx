@@ -3,9 +3,9 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';    
 
 interface Indicator {
-    title?: String;
-    subtitle?: String;
-    value?: String;
+    title?: string;
+    subtitle?: string;
+    value?: string;
 }
 
 export default function IndicatorWeather(config: Indicator) {

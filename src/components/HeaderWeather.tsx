@@ -6,10 +6,14 @@ import WeatherProp from "../interface/WeatherPro"
 import { useState, useEffect } from "react"
 
 
-export default function HeaderWeather({target, setTarget}: WeatherPro){
+export default function HeaderWeather({target, setTarget}: WeatherProp){
+    
     const [fadeClass, setFadeClass] = useState("fade-in");
     const [displayText, setDisplayText] = useState(target)
-
+    const flag = false
+    if(flag){
+        setTarget("0")
+    }
 
     useEffect(() =>{
                 setFadeClass("")

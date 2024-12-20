@@ -11,7 +11,6 @@
   import LocationMap from "./components/LocationMap";
   import Coordinates from "./interface/Coordinates";
   import GraphInput from "./interface/GraphInput";
-  import TestProp from "./interface/TestProp";
 
   interface Indicator {
     title?: string;
@@ -41,24 +40,23 @@
 
     // variables para el gráfico
     //
-    let [graphValues, setGraphValue] = useState();
+    const [graphValues, setGraphValue] = useState();
 
     {
       /* Variable de estado y función de actualización */
     }
-    let [item, setItems] = useState<Item[]>([]);
-    let [owm, setOWM] = useState(localStorage.getItem("openWeatherMap"));
+    const [item, setItems] = useState<Item[]>([]);
 
-    let [cords, setCords] = useState({
+    const [cords, setCords] = useState({
       center: [-2.170998, -79.922359],
       zoom: 12,
     });
 
-    let [indicators, setIndicators] = useState<Indicator[]>([]);
+    const [indicators, setIndicators] = useState<Indicator[]>([]);
 
-    let [value, setvalue] = useState("Guayaquil");
+    const [value, setvalue] = useState("Guayaquil");
 
-    let [weather, setWeather] = useState("Temperatura");
+    const [weather, setWeather] = useState("Temperatura");
 
     const [loading, setLoading] = useState(false); // Estado de carga
 
@@ -66,11 +64,11 @@
     const filter_data = (meteorology: string, data: Document): GraphInput => {
       let dictionary: Map<string, number[]> = new Map();
       if (data) {
-        let forecastData = data.getElementsByTagName("time");
+        const forecastData = data.getElementsByTagName("time");
 
         for (let i = 0; i < forecastData.length; i++) {
-          let timeNode = forecastData[i];
-          let day = timeNode.getAttribute("from")?.split("T")[0];
+          const timeNode = forecastData[i];
+          const day = timeNode.getAttribute("from")?.split("T")[0];
 
           if (day) {
             let value = 0;

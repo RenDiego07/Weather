@@ -1,6 +1,5 @@
 import Paper from '@mui/material/Paper';
 import { LineChart } from '@mui/x-charts/LineChart';
-import GraphInput from '../interface/GraphInput'
 import TestProp from '../interface/TestProp';
 // vlaores eje y
 
