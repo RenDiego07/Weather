@@ -14049,7 +14049,7 @@ function ControlWeather({ target, setTarget }) {
             defaultValue: "-1",
             onChange: handleChange,
             children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(MenuItem, { value: "-1", disabled: true, children: "Meteroleogía" }, "-1"),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(MenuItem, { value: "-1", disabled: true, children: "Temperatura" }, "-1"),
               options
             ]
           }
