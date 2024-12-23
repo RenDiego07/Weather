@@ -30235,6 +30235,7 @@ const LineChart = /* @__PURE__ */ reactExports.forwardRef(function LineChart2(in
 });
 
 function LineChartWeather({ arg1, tag }) {
+  console.log(tag);
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
     Paper,
     {
@@ -30249,7 +30250,7 @@ function LineChartWeather({ arg1, tag }) {
           width: 400,
           height: 250,
           series: [
-            { data: arg1.axis_Y, label: tag }
+            { data: arg1.axis_Y }
           ],
           xAxis: [{ scaleType: "point", data: arg1.axis_X }]
         }
