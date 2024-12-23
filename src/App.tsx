@@ -252,7 +252,6 @@ function App() {
         <Grid size={{ xs: 12, xl: 6 }} className="de">
           <LocationMap center={cords.center} zoom={cords.zoom}></LocationMap>
         </Grid>
-
         <Grid size={{ xs: 12, xl: 5 }}>
           <ControlWeather target={weather} setTarget={setWeather} />
           {!graphValues ||

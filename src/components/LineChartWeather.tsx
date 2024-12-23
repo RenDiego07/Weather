@@ -6,7 +6,7 @@ import TestProp from '../interface/TestProp';
 
 export default function LineChartWeather({arg1, tag}: TestProp ) {
 
-    
+    console.log(tag)
     
     return (
         <Paper
@@ -22,7 +22,7 @@ export default function LineChartWeather({arg1, tag}: TestProp ) {
                 width={400}
                 height={250}
                 series={[
-                    { data: arg1.axis_Y, label: tag },
+                    { data: arg1.axis_Y},
                 ]}
                 xAxis={[{ scaleType: 'point', data: arg1.axis_X }]}
             />
